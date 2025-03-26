@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 예약 페이지</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 5px;
+        }
+
+        nav {
+            background-color: #2f75b5;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #ff9d4d;
+        }
+
+        footer {
+            background-color: #2f75b5;
+            color: white;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #toggleButton {
+            position: absolute;
+            top: 30px;
+            left: 300px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #toggleButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>회원 예약 페이지</h1>
+    </header>
+
+    <button id="toggleButton">로고</button>
+
+    <nav id="navMenu">
+        <a href="#">회의실 목록</a>
+        <a href="#">회의실 시간</a>
+        <a href="#">회의실 취소</a>
+        <a href="#">회의실 예약 현황</a>
+    </nav>
+
+    <main></main>
+
+    <footer></footer>
+
+    <script>
+        let isDefaultMenu = true; // 기본 메뉴인지 여부를 판단하는 변수
+
+        document.getElementById("toggleButton").onclick = function () {
+            const nav = document.getElementById("navMenu");
+            const main = document.querySelector("main");
+
+            if (isDefaultMenu) {
+                nav.innerHTML = `
+                    <a href="#">회의실 등록</a>
+                    <a href="#">회의실 수정</a>
+                    <a href="#">회의실 삭제</a>
+                    <a href="#">회의실 예약 현황</a>
+                `;
+                main.innerHTML = "어드민 계정입니다"; // 메뉴 변경 시 main에 문구 표시
+            } else {
+                nav.innerHTML = `
+                    <a href="#">회의실 목록</a>
+                    <a href="#">회의실 시간</a>
+                    <a href="#">회의실 취소</a>
+                    <a href="#">회의실 예약 현황</a>
+                `;
+                main.innerHTML = ""; // 메뉴가 원래대로 돌아가면 main 내용 비우기
+            }
+
+            isDefaultMenu = !isDefaultMenu; // 메뉴 상태를 반전시켜서 토글 효과 구현
+        };
+    </script>
+
+</body>
+
+</html>
